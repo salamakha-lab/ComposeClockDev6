@@ -36,9 +36,15 @@ fun ComposeClock() {
         val clockConfig = ClockConfig(
             Random()
         )
-        ClockBackground(clockConfig)
+        //ClockBackground(clockConfig)
 
-        Stack(LayoutSize.Fill + LayoutPadding(Dp(16f))) {
+        //Stack(LayoutSize.Fill + LayoutPadding(Dp(16f))) {
+        Surface(color = clockConfig.colorPalette.backgroundColor) {
+        Box(
+            modifier = LayoutPadding(16.dp),
+            gravity = ContentGravity.Center,
+            backgroundColor = Color.Transparent
+        ) {
             /**
              * Background particles
              */
@@ -103,7 +109,7 @@ private fun ClockBackground(clockConfig: ClockConfig) {
 }
 
 @Composable
-private fun ClockSecondHand(clockConfig: ClockConfig/*, pxSize: PxSize*/) {
+private fun ClockSecondHand(clockConfig: ClockConfig) {
     val interpolator = FastOutSlowInInterpolator()
 
     Transition(definition = SecondHandAnimations, initState = 0, toState = 1) {
