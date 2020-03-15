@@ -30,28 +30,18 @@ import kotlin.math.sin
 
 @Composable
 fun ComposeClock() {
-    Stack(modifier = LayoutSize.Fill) {
-
-
-        val clockConfig = ClockConfig(
-            Random()
-        )
-        //ClockBackground(clockConfig)
-
-        //Stack(LayoutSize.Fill + LayoutPadding(Dp(16f))) {
-        Surface(color = clockConfig.colorPalette.backgroundColor) {
+    val clockConfig = ClockConfig(
+        Random
+    )
+    Surface(color = clockConfig.colorPalette.backgroundColor) {
         Box(
             modifier = LayoutPadding(16.dp),
             gravity = ContentGravity.Center,
             backgroundColor = Color.Transparent
         ) {
             /**
-             * Background particles
-             */
-
-            /**
-             * Background particles
-             */
+            * Background particles
+            */
             repeat(1000) {
                 ParticleHeartBeat(
                     clockConfig,
@@ -62,20 +52,12 @@ fun ComposeClock() {
             /**
              * Hour handle
              */
-
-            /**
-             * Hour handle
-             */
             repeat(100) {
                 ParticleHeartBeat(
                     clockConfig,
                     ParticleObject.Type.Hour
                 )
             }
-
-            /**
-             * Minute handle
-             */
 
             /**
              * Minute handle
@@ -94,19 +76,19 @@ fun ComposeClock() {
     }
 }
 
-@Composable
-private fun ClockBackground(clockConfig: ClockConfig) {
-    val backgroundPaint = remember {
-        Paint().apply {
-            color = clockConfig.colorPalette.backgroundColor
-            style = PaintingStyle.fill
-        }
-    }
+// @Composable
+// private fun ClockBackground(clockConfig: ClockConfig) {
+//     val backgroundPaint = remember {
+//         Paint().apply {
+//             color = clockConfig.colorPalette.backgroundColor
+//             style = PaintingStyle.fill
+//         }
+//     }
 
-    Canvas(modifier = LayoutSize.Fill) {
-        drawRect(size.toRect(), backgroundPaint)
-    }
-}
+//     Canvas(modifier = LayoutSize.Fill) {
+//         drawRect(size.toRect(), backgroundPaint)
+//     }
+// }
 
 @Composable
 private fun ClockSecondHand(clockConfig: ClockConfig) {
